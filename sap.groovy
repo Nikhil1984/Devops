@@ -5,7 +5,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {
 	println "PACKAGE=" + PACKAGE
 	println "COVERAGE=" + COVERAGE
 
-	withCredentials([usernamePassword(credentialsId: CREDENTIAL, usernameVariable: 'NIKHILK1', passwordVariable: 'Welcome@321')]) {
+	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 		stage('[' + LABEL + '] ABAP Unit') {
 			dir('sap-pipeline') {
 				bat "newman run abap_unit_coverage.postman_collection.json --insecure --bail " +
@@ -28,7 +28,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT) {
 	println "PACKAGE=" + PACKAGE
 	println "VARIANT=" + VARIANT
 	
-	withCredentials([usernamePassword(credentialsId: CREDENTIAL, usernameVariable: 'NIKHILK1', passwordVariable: 'Welcome@321')]) {	
+	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])]) {	
 		stage('[' + LABEL + '] ABAP Code Inspector') {
 			dir('sap-pipeline') {
 					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
@@ -49,7 +49,7 @@ def sap_api_test(LABEL,HOST,CREDENTIAL) {
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
 	
-	withCredentials([usernamePassword(credentialsId: CREDENTIAL, usernameVariable: 'NIKHILK1', passwordVariable: 'Welcome@321')]) {
+	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])]) {
 		stage('[' + LABEL + '] SAP API Tests') {
 			dir('sap-pipeline') {
 				try {
