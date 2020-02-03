@@ -1,4 +1,4 @@
-/*def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {	
+def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
@@ -19,7 +19,7 @@
 			}
 		}
 	}
-} */	
+} 	
 
 def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT) {	
 	println "LABEL=" + LABEL
