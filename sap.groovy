@@ -1,11 +1,11 @@
-def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {	
+/*def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
 	println "PACKAGE=" + PACKAGE
 	println "COVERAGE=" + COVERAGE
 
-/*	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 		stage('[' + LABEL + '] ABAP Unit') {
 			dir('sap-pipeline') {
 				bat "newman run abap_unit_coverage.postman_collection.json --insecure --bail " +
