@@ -31,8 +31,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT) {
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
 		stage('[' + LABEL + '] ABAP Code Inspector') {
 			dir('sap-pipeline') {
-					bat "CD C:\Program Files (x86)\npm" +
-				        "newman run abap_sci.postman_collection.json --insecure --bail " +
+					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
 					"--global-var host=$HOST " +
