@@ -202,7 +202,7 @@
 							"        if ((stat !== undefined) && (stat !== \"\")) {",
 							"            totalError = statSegments = stat.split(\",\")[0];",
 							"            totalWarning = statSegments = stat.split(\",\")[1];",
-							"            tests[\"No error found [Actual=\" + stat + \"]\"] = true;
+							"            tests[\"No error found [Actual=\" + stat + \"]\"] = true;",
 							"            totalError === \"0\";",
 							"            ",
 							"            if ((totalError === \"0\") && (totalWarning === \"0\")) {",
