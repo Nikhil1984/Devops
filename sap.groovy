@@ -6,7 +6,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {
 	println "COVERAGE=" + COVERAGE
 
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-		stage('[' + LABEL + '] ABAP Unit') {
+		stage( 'ABAP Unit Test') {
 			dir('sap-pipeline') {
 				bat "newman run abap_unit_coverage.postman_collection.json --insecure --bail " +
 				"--environment NPL.postman_environment.json " +
@@ -29,7 +29,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT) {
 	println "VARIANT=" + VARIANT
 	
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
-		stage('[' + LABEL + '] ABAP Code Inspector') {
+		stage('ABAP Code Inpector') {
 			dir('sap-pipeline') {
 					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
