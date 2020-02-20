@@ -27,10 +27,11 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 	println "CREDENTIAL=" + CREDENTIAL
 	println "PACKAGE=" + PACKAGE
 	println "VARIANT=" + VARIANT
-	OBJECT.each{
+
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
 		stage('ABAP Code Inpector') {
 			dir('sap-pipeline') {
+					OBJECT.each{
 					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
