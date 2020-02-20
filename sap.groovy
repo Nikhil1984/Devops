@@ -34,7 +34,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 					OBJECT.each{ def type = OBJECT[count].split( )
 			                if ( type[0] == 'DEVC' ){ def prog = type[1].split('asx.xml') 
 								  def pack = prog[0] println pack }
-					elseif ( type[0] == 'CLAS' ){  } 
+					if ( type[0] == 'CLAS' ){  } 
 			                count = count + 1
 					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
