@@ -30,7 +30,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE,OBJECT) {
 				"--global-var username=$USERNAME " +
 				"--global-var password=$PASSWORD " +
                  		"--global-var clas=$CLAS " + 
-			        "--global-var coverage_min=$COVERAGE "} 
+			        "--global-var coverage_min=$COVERAGE " } 
 			                count = count + 1
 
 			}
