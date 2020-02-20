@@ -38,7 +38,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE,OBJECT) {
 		}
 	}
 } 	
-
+}
 def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {	
 	def CLAS = ' '
 	println "LABEL=" + LABEL
@@ -78,7 +78,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 		}
 	}
 }
-
+}
 def sap_api_test(LABEL,HOST,CREDENTIAL) {
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
