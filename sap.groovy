@@ -1,12 +1,10 @@
-def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,OBJECT,COVERAGE) {	
+def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
-/*	println "PACKAGE=" + PACKAGE */
+	println "PACKAGE=" + PACKAGE 
 	println "COVERAGE=" + COVERAGE
 	
-	object.each{ 
-		println "TEST"
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 		stage( 'ABAP Unit Test') {
 			dir('sap-pipeline') {
@@ -22,7 +20,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,OBJECT,COVERAGE) {
 		}
 	}
 } 	
-}
+
 def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
