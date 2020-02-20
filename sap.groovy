@@ -32,7 +32,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 		stage('ABAP Code Inpector') {
 			dir('sap-pipeline') { def count = 0
 					OBJECT.each{ def type = OBJECT[count].split( )
-			                if ( type[0] == 'DEVC' ){ def prog = type[1].split( 'asx.xml')  $PACKAGE = prog[0] println $PACKAGE }
+			                if ( type[0] == 'DEVC' ){ def prog = type[1].split('asx.xml') PACKAGE = prog[0] println PACKAGE }
 					elseif ( type[0] == 'CLAS' ){  } 
 			                count = count + 1
 					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
