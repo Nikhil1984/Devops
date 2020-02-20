@@ -22,6 +22,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE,OBJECT) {
 } 	
 
 def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {	
+	def CLAS = ' '
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
@@ -32,10 +33,11 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 		stage('ABAP Code Inpector') {
 			dir('sap-pipeline') { def count = 0
 					OBJECT.each{ def type = OBJECT[count].split( )
-			                if ( type[0] == 'DEVC' ){ def prog = type[1].split('asx.xml') 
-								  PACKAGE = prog[0] 
+					def prog = type[1].split('asx.xml')	    
+			                if ( type[0] == 'DEVC' ){ PACKAGE = prog[0] 
 								  println "PACKAGE=" + PACKAGE }
-					if ( type[0] == 'CLAS' ){  } 
+			                if ( type[0] == 'CLAS' ){ CLAS = prog[0]
+								  println "CLASS=" + CLAS } 
 			                count = count + 1
 					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
@@ -44,6 +46,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 					"--global-var username=$USERNAME " +
 					"--global-var password=$PASSWORD " +
 					"--global-var package=$PACKAGE " +
+				        "--global-var class=$CLAS " +
 					"--global-var atc_variant=$VARIANT "
 			}
 		}
