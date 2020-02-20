@@ -35,19 +35,27 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 					OBJECT.each{ def type = OBJECT[count].split( )
 					def prog = type[1].split('.asx.xml')	    
 			                if ( type[0] == 'DEVC' ){ PACKAGE = prog[0] 
-								  println "PACKAGE=" + PACKAGE }
-			                if ( type[0] == 'CLAS' ){ CLAS = prog[0]
-								  println "CLASS=" + CLAS } 
-			                count = count + 1
-					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
+								  println "PACKAGE=" + PACKAGE 
+					bat "newman run abap_scipack.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
 					"--global-var host=$HOST " +
 					"--global-var username=$USERNAME " +
 					"--global-var password=$PASSWORD " +
 					"--global-var package=$PACKAGE " +
-				        "--global-var class=$CLAS " +
-					"--global-var atc_variant=$VARIANT "
+					"--global-var atc_variant=$VARIANT " }
+
+			                if ( type[0] == 'CLAS' ){ CLAS = prog[0]
+								  println "CLASS=" + CLAS 
+					bat "newman run abap_sciclas.postman_collection.json --insecure --bail " +
+					"--environment NPL.postman_environment.json " +
+					"--timeout-request 120000 " +
+					"--global-var host=$HOST " +
+					"--global-var username=$USERNAME " +
+					"--global-var password=$PASSWORD " +
+					"--global-var clas=$CLAS " +
+					"--global-var atc_variant=$VARIANT " } 
+			                count = count + 1
 			}
 		}
 	}
