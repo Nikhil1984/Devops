@@ -77,7 +77,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 		}
 	}
 }
-}
+
 def sap_api_test(LABEL,HOST,CREDENTIAL) {
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
