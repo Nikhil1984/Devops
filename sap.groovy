@@ -1,4 +1,4 @@
-def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {	
+def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE,OBJECT) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
@@ -21,13 +21,13 @@ def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {
 	}
 } 	
 
-def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT) {	
+def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
 	println "PACKAGE=" + PACKAGE
 	println "VARIANT=" + VARIANT
-	
+	OBJECT.each{
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
 		stage('ABAP Code Inpector') {
 			dir('sap-pipeline') {
@@ -43,7 +43,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT) {
 		}
 	}
 }
-
+}
 def sap_api_test(LABEL,HOST,CREDENTIAL) {
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
