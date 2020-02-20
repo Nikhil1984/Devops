@@ -1,9 +1,10 @@
-def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {	
+def abap_unit(LABEL,HOST,CREDENTIAL,OBJECT,COVERAGE) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
-	println "PACKAGE=" + PACKAGE
+/*	println "PACKAGE=" + PACKAGE */
 	println "COVERAGE=" + COVERAGE
+	
 
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 		stage( 'ABAP Unit Test') {
@@ -14,7 +15,8 @@ def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE) {
 				"--global-var host=$HOST " +
 				"--global-var username=$USERNAME " +
 				"--global-var password=$PASSWORD " +
-				"--global-var package=$PACKAGE " +
+		/*		"--global-var package=$PACKAGE " + */
+				"--global-var object =$object  " +	
 				"--global-var coverage_min=$COVERAGE "
 			}
 		}
