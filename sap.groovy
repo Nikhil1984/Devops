@@ -32,7 +32,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 		stage('ABAP Code Inpector') {
 			dir('sap-pipeline') { def count = 0
 					OBJECT.each{ def type = OBJECT[count].split( )
-				        println type 		
+				        println type[0] 		
 					bat "newman run abap_sci.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
