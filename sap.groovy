@@ -33,7 +33,7 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 		stage('ABAP Code Inpector') {
 			dir('sap-pipeline') { def count = 0
 					OBJECT.each{ def type = OBJECT[count].split( )
-					def prog = type[1].split('asx.xml')	    
+					def prog = type[1].split('.asx.xml')	    
 			                if ( type[0] == 'DEVC' ){ PACKAGE = prog[0] 
 								  println "PACKAGE=" + PACKAGE }
 			                if ( type[0] == 'CLAS' ){ CLAS = prog[0]
