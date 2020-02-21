@@ -153,7 +153,7 @@
 							"    var jsonObject = xml2Json(responseBody);",
 							"",
 							"    if (jsonObject[\"aunit:runResult\"].program.testClasses.testClass.testMethods.testMethod.alerts === \"\") {",
-							"     //   processNodes(jsonObject[\"aunit:runResult\"].program, 0);", 
+							"    
 							"    } else {",
 							"        processAlerts(jsonObject[\"aunit:runResult\"].program.testClasses.testClass.testMethods.testMethod.alerts, 0);",
 							"    }",
