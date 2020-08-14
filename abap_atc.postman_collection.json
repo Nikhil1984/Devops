@@ -55,7 +55,7 @@
 					"raw": "{\n\t\n}"
 				},
 				"url": {
-					"raw": "{{protocol}}://{{host}}:{{port}}/sap/bc/adt/atc/worklists?sap-client={{client}}&sap-language=EN",
+					"raw": "{{protocol}}://{{host}}:{{port}}/sap/bc/adt/atc/worklists?maxItemCount=1&name={{atc_variant}}&sap-client={{client}}&sap-language=EN",
 					"protocol": "{{protocol}}",
 					"host": [
 						"{{host}}"
