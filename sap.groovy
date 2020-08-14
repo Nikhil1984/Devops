@@ -33,11 +33,11 @@ def abap_cva(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 			dir('sap-pipeline') {
 					bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
-					"--timeout-request 120000 " +
+	    				"--timeout-request 120000 " +
 					"--global-var host=$HOST " +
 					"--global-var username=$USERNAME " +
 					"--global-var password=$PASSWORD " +
-					"--global-var package=$PACKAGE " +
+                 			"--global-var tran=$TRANSPORT "    +
 					"--global-var atc_variant=$VARIANT " 
 			}
 		}
@@ -60,7 +60,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 					"--global-var host=$HOST " +
 					"--global-var username=$USERNAME " +
 					"--global-var password=$PASSWORD " +
-					"--global-var package=$PACKAGE " +
+                 			"--global-var tran=$TRANSPORT "    +
 					"--global-var atc_variant=$VARIANT " 
 				
 			}
