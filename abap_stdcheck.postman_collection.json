@@ -282,10 +282,8 @@
 							"function displayFinding(finding, attr) {",
 							"    var priority = finding.$[\"atcfinding:priority\"];",
 							"    if (priority === \"1\") { //Error",
-/*							"        tests[\"ERROR: \" + finding.$[\"atcfinding:checkTitle\"] + \": \" + attr[\"adtcore:packageName\"] + \"/\" + attr[\"adtcore:type\"] + \"/\" + attr[\"adtcore:name\"] + \" by \" + attr[\"atcobject:author:author\"]] = false;", */
 							"        tests[\"ERROR: \" + finding.$[\"atcfinding:checkTitle\"] + \": \" + finding.$[\"atcfinding:messageId\"] + \"/\" + finding.$[\"atcfinding:messageTitle\"] +  \" in \"  + attr[\"adtcore:type\"] + \"/\" + attr[\"adtcore:name\"]] = false;",
 							"    } else if (priority === \"2\") {  //Warning",
-/*							"        tests[\"WARNING: \" + finding.$[\"atcfinding:checkTitle\"] + \": \" + attr[\"adtcore:packageName\"] + \"/\" + attr[\"adtcore:type\"] + \"/\" + attr[\"adtcore:name\"] + \" by \" + attr[\"atcobject:author:author\"]] = true;", */
 							"        tests[\"WARNING: \" + finding.$[\"atcfinding:checkTitle\"] + \": \" + finding.$[\"atcfinding:messageId\"] + \"/\" + finding.$[\"atcfinding:messageTitle\"] +  \" in \"  + attr[\"adtcore:type\"] + \"/\" + attr[\"adtcore:name\"]] = false;",
 							"    }",
 							"}",
