@@ -17,13 +17,13 @@ def abap_atc(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 				"--global-var password=$PASSWORD " +
                  		"--global-var tran=$TRANSPORT "    +
 				"--global-var atc_variant=$VARIANT " 
-				}catch(e) {
+				  } catch(e) {
 					return 'FAILURE'
 				}
 			}
 		}
 	}
-} 	
+}
 
 def abap_cva(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {	
 	println "LABEL=" + LABEL
@@ -44,7 +44,7 @@ def abap_cva(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 					"--global-var password=$PASSWORD " +
 					"--global-var package=$PACKAGE " +
 					"--global-var atc_variant=$VARIANT " 
-				}catch(e) {
+				  } catch(e) {
 					return 'FAILURE'
 				}
 			}
@@ -73,7 +73,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 					"--global-var password=$PASSWORD " +
 					"--global-var package=$PACKAGE " +
 					"--global-var atc_variant=$VARIANT " 
-				}catch(e) {
+				  } catch(e) {
 					return 'FAILURE'
 				}
 			}
