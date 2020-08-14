@@ -283,7 +283,7 @@
 							"    var priority = finding.$[\"atcfinding:priority\"];",
 							"    if (priority === \"1\") { //Error",
 							"        tests[\"ERROR: \" + finding.$[\"atcfinding:checkTitle\"] + \": \" + finding.$[\"atcfinding:messageId\"] + \"/\" + finding.$[\"atcfinding:messageTitle\"] +  \" in \"  + attr[\"adtcore:type\"] + \"/\" + attr[\"adtcore:name\"]] = false;",
-							"    } else if (priority === \"2\") {  //Warning",
+							"    } else if (priority === \"0\") {  //Warning",
 							"        tests[\"WARNING: \" + finding.$[\"atcfinding:checkTitle\"] + \": \" + finding.$[\"atcfinding:messageId\"] + \"/\" + finding.$[\"atcfinding:messageTitle\"] +  \" in \"  + attr[\"adtcore:type\"] + \"/\" + attr[\"adtcore:name\"]] = false;",
 							"    }",
 							"}",
