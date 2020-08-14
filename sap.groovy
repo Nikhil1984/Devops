@@ -7,7 +7,7 @@ def abap_unit(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 	
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 		stage( 'ABAP TEST COCKPIT') {
-				bat "newman run abap_unit_coverage_clas.postman_collection.json --insecure --bail " +
+				bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 				"--environment NPL.postman_environment.json " +
 				"--timeout-request 120000 " +
 				"--global-var host=$HOST " +
@@ -29,7 +29,7 @@ def abap_cva(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
 		stage('Code Vurnability Analysis') {
 
-					bat "newman run abap_scipack.postman_collection.json --insecure --bail " +
+					bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
 					"--global-var host=$HOST " +
@@ -51,7 +51,7 @@ def abap_unittest(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
 		stage('Code Vurnability Analysis') {
 
-					bat "newman run abap_scipack.postman_collection.json --insecure --bail " +
+					bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
 					"--global-var host=$HOST " +
