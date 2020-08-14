@@ -1,47 +1,34 @@
-def abap_unit(LABEL,HOST,CREDENTIAL,PACKAGE,COVERAGE,OBJECT) {	
-	def CLAS = ' '
+def abap_unit(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
-	println "PACKAGE=" + PACKAGE 
-	println "COVERAGE=" + COVERAGE
+	println "TRANSPORT=" + TRANSPORT 
+	println "VARIANT=" + VARIANT
 	
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-		stage( 'ABAP Unit Test') {
-			dir('sap-pipeline') { def count = 0
-					OBJECT.each{ def type = OBJECT[count].split( )
-					def prog = type[1].split('.asx.xml')	    
-			        if ( type[0] == 'CLAS' ){ CLAS = prog[0]
-								  println "CLASS=" + CLAS 
+		stage( 'ABAP TEST COCKPIT') {
 				bat "newman run abap_unit_coverage_clas.postman_collection.json --insecure --bail " +
 				"--environment NPL.postman_environment.json " +
 				"--timeout-request 120000 " +
 				"--global-var host=$HOST " +
 				"--global-var username=$USERNAME " +
 				"--global-var password=$PASSWORD " +
-                 		"--global-var clas=$CLAS " + 
-			        "--global-var coverage_min=$COVERAGE " } 
-			                count = count + 1
-			}
+                 		"--global-var tran=$TRANSPORT "    +
+				"--global-var atc_variant=$VARIANT " 
 		}
 	}
 } 	
-}
-def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {	
-	def CLAS = ' '
+
+def abap_cva(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {	
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
 	println "CREDENTIAL=" + CREDENTIAL
-	println "PACKAGE=" + PACKAGE
+	println "TRANSPORT=" + TRANSPORT 
 	println "VARIANT=" + VARIANT
 
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
-		stage('ABAP Code Inpector') {
-			dir('sap-pipeline') { def count = 0
-					OBJECT.each{ def type = OBJECT[count].split( )
-					def prog = type[1].split('.asx.xml')	    
-			                if ( type[0] == 'DEVC' ){ PACKAGE = prog[0] 
-								  println "PACKAGE=" + PACKAGE 
+		stage('Code Vurnability Analysis') {
+
 					bat "newman run abap_scipack.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
@@ -49,24 +36,34 @@ def abap_sci(LABEL,HOST,CREDENTIAL,PACKAGE,VARIANT,OBJECT) {
 					"--global-var username=$USERNAME " +
 					"--global-var password=$PASSWORD " +
 					"--global-var package=$PACKAGE " +
-					"--global-var atc_variant=$VARIANT " }
+					"--global-var atc_variant=$VARIANT " 
+		}
+	}
+}
 
-			                if ( type[0] == 'CLAS' ){ CLAS = prog[0]
-								  println "CLASS=" + CLAS 
-					bat "newman run abap_sciclas.postman_collection.json --insecure --bail " +
+def abap_unittest(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {	
+	println "LABEL=" + LABEL
+	println "HOST=" + HOST
+	println "CREDENTIAL=" + CREDENTIAL
+	println "TRANSPORT=" + TRANSPORT 
+	println "VARIANT=" + VARIANT
+
+	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
+		stage('Code Vurnability Analysis') {
+
+					bat "newman run abap_scipack.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
 					"--global-var host=$HOST " +
 					"--global-var username=$USERNAME " +
 					"--global-var password=$PASSWORD " +
-					"--global-var clas=$CLAS " +
-					"--global-var atc_variant=$VARIANT " } 
-			                count = count + 1
-			}
+					"--global-var package=$PACKAGE " +
+					"--global-var atc_variant=$VARIANT " 
 		}
 	}
 }
-}
+
+/*
 def sap_api_test(LABEL,HOST,CREDENTIAL) {
 	println "LABEL=" + LABEL
 	println "HOST=" + HOST
@@ -90,6 +87,6 @@ def sap_api_test(LABEL,HOST,CREDENTIAL) {
 			}
 		}
 	}
-}
+} */
 
 return this
