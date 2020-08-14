@@ -7,6 +7,8 @@ def abap_atc(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 	
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 		stage( 'ABAP TEST COCKPIT') {
+			dir('sap-pipeline') {
+				try{
 				bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 				"--environment NPL.postman_environment.json " +
 				"--timeout-request 120000 " +
@@ -15,6 +17,10 @@ def abap_atc(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 				"--global-var password=$PASSWORD " +
                  		"--global-var tran=$TRANSPORT "    +
 				"--global-var atc_variant=$VARIANT " 
+				}catch(e) {
+					return 'FAILURE'
+				}
+			}
 		}
 	}
 } 	
@@ -28,7 +34,8 @@ def abap_cva(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
 		stage('Code Vurnability Analysis') {
-
+			dir('sap-pipeline') {
+				try{
 					bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
@@ -37,6 +44,10 @@ def abap_cva(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 					"--global-var password=$PASSWORD " +
 					"--global-var package=$PACKAGE " +
 					"--global-var atc_variant=$VARIANT " 
+				}catch(e) {
+					return 'FAILURE'
+				}
+			}
 		}
 	}
 }
@@ -51,6 +62,9 @@ def abap_unit(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
 		stage('Code Vurnability Analysis') {
 
+		stage('Code Vurnability Analysis') {
+			dir('sap-pipeline') {
+				try{
 					bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
 					"--timeout-request 120000 " +
@@ -59,6 +73,10 @@ def abap_unit(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 					"--global-var password=$PASSWORD " +
 					"--global-var package=$PACKAGE " +
 					"--global-var atc_variant=$VARIANT " 
+				}catch(e) {
+					return 'FAILURE'
+				}
+			}
 		}
 	}
 }
