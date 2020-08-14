@@ -1,6 +1,6 @@
 {
 	"info": {
-		"name": "abap_sci",
+		"name": "abap_stdcheck",
 		"_postman_id": "fbd8d31b-8cc8-8917-5cb8-d97991cde2cf",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -233,7 +233,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<atc:run xmlns:atc=\"http://www.sap.com/adt/atc\" maximumVerdicts=\"100\">\r\n  <objectSets xmlns:adtcore=\"http://www.sap.com/adt/core\">\r\n    <objectSet kind=\"inclusive\">\r\n      <adtcore:objectReferences>\r\n        <adtcore:objectReference adtcore:uri=\"/sap/bc/adt/repository/informationsystem/virtualfolders?selection=package%3a{{package}}\"/>\r\n      </adtcore:objectReferences>\r\n    </objectSet>\r\n  </objectSets>\r\n</atc:run>\r\n"
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<atc:run xmlns:atc=\"http://www.sap.com/adt/atc\" maximumVerdicts=\"100\">\r\n  <objectSets xmlns:adtcore=\"http://www.sap.com/adt/core\">\r\n    <objectSet kind=\"inclusive\">\r\n      <adtcore:objectReferences>\r\n        <adtcore:objectReference adtcore:uri=\"/sap/bc/adt/vit/wb/object_type/%20%20%20%20rq/object_name/{{tran}}\"/>\r\n      </adtcore:objectReferences>\r\n    </objectSet>\r\n  </objectSets>\r\n</atc:run>\r\n"
 	                         	},
 				"url": {
 					"raw": "{{protocol}}://{{host}}:{{port}}/sap/bc/adt/atc/runs?worklistId={{worklist_id}}&sap-client={{client}}&sap-language=EN",
