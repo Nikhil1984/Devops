@@ -6,7 +6,7 @@ def abap_atc(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 	println "VARIANT=" + VARIANT
 	
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-		stage( 'ABAP TEST COCKPIT') {
+		stage( 'ABAP Test Cockpit') {
 			dir('sap-pipeline') {
 				bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 				"--environment NPL.postman_environment.json " +
@@ -29,7 +29,7 @@ def abap_cva(LABEL,HOST,CREDENTIAL,TRANSPORT,VARIANT) {
 	println "VARIANT=" + VARIANT
 
 	withCredentials([usernamePassword(credentialsId: 'NPL', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {	
-		stage('Code Vurnability Analysis') {
+		stage('Code Vulnerability Analysis') {
 			dir('sap-pipeline') {
 					bat "newman run abap_stdcheck.postman_collection.json --insecure --bail " +
 					"--environment NPL.postman_environment.json " +
